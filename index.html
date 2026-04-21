@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Larson HR Consulting</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; color: #2c2c2a; background: #faf9f7; }
+  a { color: #1e5fa5; text-decoration: none; }
+
+  nav {
+    background: #fff;
+    border-bottom: 1px solid #e0ddd6;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 70px;
+  }
+  nav .logo-text { font-family: Arial, sans-serif; font-size: 1.1rem; font-weight: 700; color: #1e5fa5; letter-spacing: 0.02em; }
+  nav .logo-sub { font-family: Arial, sans-serif; font-size: 0.75rem; color: #888; letter-spacing: 0.12em; text-transform: uppercase; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul li a { font-family: Arial, sans-serif; font-size: 0.88rem; color: #444; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+  nav ul li a:hover { color: #1e5fa5; }
+
+  section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+
+  #hero {
+    max-width: 100%;
+    background: linear-gradient(135deg, #1a4f8a 0%, #2166b0 60%, #3a82c4 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+    color: #fff;
+  }
+  #hero .logo-box { display: inline-flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+  #hero .L-block {
+    width: 70px; height: 70px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.5);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem; font-weight: 700; font-family: Georgia, serif; color: #fff;
+  }
+  #hero .brand-text { text-align: left; }
+  #hero .brand-name { font-family: Arial, sans-serif; font-size: 1.8rem; font-weight: 700; color: #fff; line-height: 1; }
+  #hero .brand-name span { color: rgba(255,255,255,0.75); font-weight: 400; }
+  #hero .brand-tagline { font-family: Arial, sans-serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 4px; }
+  #hero h1 { font-size: 1.75rem; font-weight: 400; color: #fff; line-height: 1.5; max-width: 620px; margin: 0 auto 1rem; }
+  #hero p { font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 540px; margin: 0 auto 2rem; line-height: 1.7; }
+  .btn {
+    display: inline-block; background: #fff; color: #1a4f8a;
+    font-family: Arial, sans-serif; font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.85rem 2.2rem; border: 2px solid #fff; transition: all 0.2s; cursor: pointer;
+  }
+  .btn:hover { background: transparent; color: #fff; }
+
+  #about { border-bottom: 1px solid #e0ddd6; }
+  #about .inner { display: flex; gap: 3rem; align-items: flex-start; }
+  #about .avatar {
+    flex-shrink: 0; width: 100px; height: 100px; background: #1a4f8a;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Georgia, serif; font-size: 2.2rem; color: #fff; font-weight: 700;
+  }
+  #about .text h2 { font-size: 1.5rem; font-weight: 400; color: #1a4f8a; margin-bottom: 1rem; }
+  #about .text p { font-size: 1rem; line-height: 1.8; color: #444; margin-bottom: 1rem; }
+
+  #services { background: #f2f0eb; max-width: 100%; padding: 5rem 2rem; }
+  #services .inner { max-width: 900px; margin: 0 auto; }
+  #services h2 { font-size: 1.5rem; font-weight: 400; color: #1a4f8a; margin-bottom: 3rem; text-align: center; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .service-card { background: #fff; border: 1px solid #ddd; padding: 1.75rem 1.5rem; }
+  .service-card .icon { width: 40px; height: 4px; background: #1a4f8a; margin-bottom: 1rem; }
+  .service-card h3 { font-size: 1rem; font-weight: 700; font-family: Arial, sans-serif; color: #2c2c2a; margin-bottom: 0.6rem; }
+  .service-card p { font-size: 0.9rem; line-height: 1.65; color: #555; font-family: Arial, sans-serif; }
+
+  #contact { border-top: 1px solid #e0ddd6; }
+  #contact h2 { font-size: 1.5rem; font-weight: 400; color: #1a4f8a; margin-bottom: 2.5rem; }
+  #contact p { font-size: 1rem; line-height: 1.8; color: #444; margin-bottom: 2rem; max-width: 560px; }
+  .contact-info { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-row { display: flex; align-items: center; gap: 1rem; font-family: Arial, sans-serif; font-size: 0.95rem; color: #444; }
+  .contact-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #888; width: 80px; }
+
+  footer {
+    background: #1a4f8a; color: rgba(255,255,255,0.7);
+    text-align: center; padding: 2rem;
+    font-family: Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.05em;
+  }
+  footer span { color: #fff; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <div class="logo-text">Larson <span style="color:#444;font-weight:400;">HR Consulting</span></div>
+    <div class="logo-sub">Human Resources · Strategy · Compliance</div>
+  </div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div id="hero">
+  <div class="logo-box">
+    <div class="L-block">L</div>
+    <div class="brand-text">
+      <div class="brand-name">Larson <span>HR Consulting</span></div>
+      <div class="brand-tagline">Human Resources · Strategy · Compliance</div>
+    </div>
+  </div>
+  <h1>Practical HR Solutions for Local Government and Small Organizations</h1>
+  <p>Bringing over two decades of real-world business and human resources leadership to the organizations that serve our communities.</p>
+  <a class="btn" href="#contact">Get in Touch</a>
+</div>
+
+<section id="about">
+  <div class="inner">
+    <div class="avatar">SL</div>
+    <div class="text">
+      <h2>About Sara Larson</h2>
+      <p>Sara Larson is a seasoned HR professional with expertise in public sector and small business human resources, employee relations, compensation, and regulatory compliance. With a master's degree in business administration and years of hands-on leadership in North Carolina county government, Sara brings a grounded, practical perspective to every engagement.</p>
+      <p>At Larson HR Consulting, Sara partners with local governments, nonprofits, and small organizations to build HR systems that are fair, sound, and built to last — without the overhead of a large consulting firm. Whether you need a compensation study, policy review, or ongoing HR guidance, you get direct access to someone who has done the work.</p>
+    </div>
+  </div>
+</section>
+
+<div id="services">
+  <div class="inner">
+    <h2>Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon"></div>
+        <h3>Compensation Studies</h3>
+        <p>Market-based pay analysis, salary schedule development, and classification reviews grounded in regional data and NC statutory requirements.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"></div>
+        <h3>Policy Development</h3>
+        <p>Clear, compliant personnel policies and employee handbooks tailored to your organization's size, structure, and governing framework.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"></div>
+        <h3>Compliance & Risk</h3>
+        <p>Guidance on federal and NC employment law, FLSA compliance, FMLA/ADA administration, and workplace investigation support.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"></div>
+        <h3>Employee Relations</h3>
+        <p>Grievance process design, disciplinary review, performance management frameworks, and coaching for supervisors and HR teams.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"></div>
+        <h3>HR Audits</h3>
+        <p>Comprehensive reviews of your HR practices, documentation, and processes to identify gaps and prioritize improvements.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"></div>
+        <h3>Interim HR Support</h3>
+        <p>Fractional HR leadership for organizations between hires or navigating a busy season — providing hands-on support without the cost of a full-time position.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="contact">
+  <h2>Let's Talk</h2>
+  <p>Ready to discuss how Larson HR Consulting can support your organization? Reach out — initial consultations are always welcomed.</p>
+  <div class="contact-info">
+    <div class="contact-row">
+      <span class="contact-label">Location</span>
+      Eastern North Carolina
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Phone</span>
+      <a href="tel:9194324680">(919) 432-4680 — calls or texts welcome</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">Email</span>
+      <a href="mailto:sara@larsonhrconsulting.com">Sara@LarsonHRConsulting.com</a>
+    </div>
+    <div class="contact-row">
+      <span class="contact-label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/sara-tyner-larson-msml-pshra-scp-714835a9" target="_blank">linkedin.com/in/sara-tyner-larson</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 <span>Larson HR Consulting</span> &nbsp;·&nbsp; Eastern North Carolina &nbsp;·&nbsp; Human Resources · Strategy · Compliance
+</footer>
+
+</body>
+</html>
